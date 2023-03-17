@@ -24,7 +24,17 @@ const CalendarWrapper = (props) => {
       <Calendar
         className={classes.calendar}
         tileContent={({ date, view }) =>
-          view === "month" && date.getDay() === 0 ? <p>It's Sunday!</p> : ""
+          view === "month" &&
+          date.getDate() ===
+            new Date(props.calendarEntries?.[0].date).getDate() &&
+          date.getMonth() ===
+            new Date(props.calendarEntries?.[0].date).getMonth() &&
+          date.getFullYear() ===
+            new Date(props.calendarEntries?.[0].date).getFullYear() ? (
+            <p>{props.calendarEntries?.[0].path}</p>
+          ) : (
+            ""
+          )
         }
         onChange={setCalendarDate}
         value={calendarDate}

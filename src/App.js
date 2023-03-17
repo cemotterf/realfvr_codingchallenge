@@ -28,6 +28,7 @@ function App() {
   const [availablePaths, setAvailablePaths] = useState();
   const [currentPath, setCurrentPath] = useState();
   const [walletAddress, setWalletAddress] = useState("");
+  const [calendarEntries, setCalendarEntries] = useState();
 
   const generatePaths = () => {
     const paths_num = Math.floor(Math.random() * 10) + 1;
@@ -127,7 +128,16 @@ function App() {
   async function setCalendarEntryHandler(event) {
     event.preventDefault();
 
-    console.log("test");
+    if (calendarEntries) {
+      calendarEntries.push([
+        { path: currentPath, date: event.target.date.value },
+      ]);
+    }
+    if (!calendarEntries) {
+      setCalendarEntries([
+        { path: currentPath, date: event.target.date.value },
+      ]);
+    }
 
     setOpenModal(false);
   }
@@ -148,6 +158,7 @@ function App() {
             isModalOpen={openModal}
             modalContent={modalContent}
             onOpenModal={setOpenModalHandler}
+            calendarEntries={calendarEntries}
           />
         </Wrapper>
       ) : (
