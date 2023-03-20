@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# RealFvr - Senior Frontend Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Usage
 
-## Available Scripts
+1. Clone this repository
 
-In the project directory, you can run:
+<pre><code>git clone https://github.com/cemotterf/realfvr_codingchallenge.git</code></pre>
 
-### `npm start`
+2. Install packages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<pre><code>npm install</code></pre>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Run application
 
-### `npm test`
+<pre><code>npm start</code></pre>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. To properly run this demo, you'll need the MetaMask browser extension installed. Otherwise, the following warning will apper on your screen
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![FireShot Webpage Capture 001 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226458686-8bfbadf1-686f-4a77-bb30-ac81ed70bbaa.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. If you have MetaMask installed, the main screen will load as follows
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![FireShot Webpage Capture 002 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226459154-fc783ee2-b11b-4fcb-96d1-eaf64cb93f8d.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+6. Clicking on Available Paths will randomly generate a set of dummy paths which will be used to log to to your MetaMask account
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+![FireShot Webpage Capture 004 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226459217-0985b055-936c-44c1-bf16-2a74d1c70de3.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+7. On Connect Wallet, you can use any set of emoji paths to connect to your wallet (for better use, just copy and paste the path you want to use. If inserted correctly, any path will successfully connect to your wallet)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+![FireShot Webpage Capture 006 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226459462-a3a7bffc-ff50-493a-bd8c-b505b7a313e5.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+8. Once your wallet is connected, the path you used and your wallet address will appear on screen
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+![FireShot Webpage Capture 008 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226459723-47f8fa0b-8362-4fb7-9c53-24c25c226186.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+9. After wallet connection, use the Add Calendar Entry button to register an entry on the calendar by choosing a date. The calendar entry will appear on the Calendar Component and will be the Current Path used to connect to your MetaMask wallet.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+![FireShot Webpage Capture 009 - 'React App' - localhost](https://user-images.githubusercontent.com/37664804/226460500-3df167d8-38b2-4fcc-bacf-0de69809121c.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+OBS.: On a successfull connection to your MetaMask wallet, it's possible to create a signer or a provider to execute functions like sending crypto from one wallet to another, but that's not the scope of this demo.
+
+
+Thanks for reading!! Feel free to contact me in case of any doubts.
+Cheers!
