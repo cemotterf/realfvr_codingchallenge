@@ -126,10 +126,9 @@ function App() {
   }
 
   async function setCalendarEntryHandler(event) {
-    event.preventDefault();
-
     if (calendarEntries) {
-      calendarEntries.push([
+      setCalendarEntries([
+        ...calendarEntries,
         { path: currentPath, date: event.target.date.value },
       ]);
     }

@@ -23,19 +23,21 @@ const CalendarWrapper = (props) => {
       </Button>
       <Calendar
         className={classes.calendar}
-        tileContent={({ date, view }) =>
-          view === "month" &&
-          date.getDate() ===
-            new Date(props.calendarEntries?.[0].date).getDate() &&
-          date.getMonth() ===
-            new Date(props.calendarEntries?.[0].date).getMonth() &&
-          date.getFullYear() ===
-            new Date(props.calendarEntries?.[0].date).getFullYear() ? (
-            <p>{props.calendarEntries?.[0].path}</p>
-          ) : (
-            ""
-          )
-        }
+        tileContent={({ date, view }) => {
+          for (let i = 0; i < props.calendarEntries?.length; i++) {
+            if (
+              view === "month" &&
+              date.getDate() - 1 ===
+                new Date(props.calendarEntries?.[i].date).getDate() &&
+              date.getMonth() ===
+                new Date(props.calendarEntries?.[i].date).getMonth() &&
+              date.getFullYear() ===
+                new Date(props.calendarEntries?.[i].date).getFullYear()
+            ) {
+              return <p>{props.calendarEntries?.[i].path}</p>;
+            }
+          }
+        }}
         onChange={setCalendarDate}
         value={calendarDate}
       />
