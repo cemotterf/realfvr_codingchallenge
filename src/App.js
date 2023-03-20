@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Wrapper from "./components/Helpers/Wrapper";
 import Header from "./components/Header/Header";
@@ -31,23 +31,35 @@ function App() {
   const [calendarEntries, setCalendarEntries] = useState();
 
   const generatePaths = () => {
-    const paths_num = Math.floor(Math.random() * 10) + 1;
-    const paths = [];
+    if (!availablePaths) {
+      const paths_num = Math.floor(Math.random() * 10) + 1;
+      const paths = [];
 
-    for (let i = 0; i < paths_num; i++) {
-      paths[i] = "" + Math.floor(Math.random() * 50) + paths[i - 1];
-      paths[i] = ecoji.encode(paths[i].hashCode().toString());
+      for (let i = 0; i < paths_num; i++) {
+        paths[i] = "" + Math.floor(Math.random() * 50) + paths[i - 1];
+        paths[i] = ecoji.encode(paths[i].hashCode().toString());
+      }
+
+      setAvailablePaths(paths);
+
+      localStorage.setItem("availablePaths", paths);
+
+      return (
+        <ol>
+          {paths.map((item) => {
+            return <li key={item}>{item}</li>;
+          })}
+        </ol>
+      );
+    } else {
+      return (
+        <ol>
+          {availablePaths.map((item) => {
+            return <li key={item}>{item}</li>;
+          })}
+        </ol>
+      );
     }
-
-    setAvailablePaths(paths);
-
-    return (
-      <ol>
-        {paths.map((item) => {
-          return <li key={item}>{item}</li>;
-        })}
-      </ol>
-    );
   };
 
   const setOpenModalHandler = (event) => {
@@ -115,7 +127,9 @@ function App() {
             method: "eth_requestAccounts",
           });
           setWalletAddress(accounts[0]);
+          localStorage.setItem("accountAddress", accounts[0]);
           setCurrentPath(event.target.path.value);
+          localStorage.setItem("currentPath", event.target.path.value);
         } catch (error) {
           console.log("Error");
         }
@@ -140,6 +154,35 @@ function App() {
 
     setOpenModal(false);
   }
+
+  // For correctly updating calendarEntries in the localStorage:
+  useEffect(() => {
+    if (calendarEntries) {
+      localStorage.setItem("calendarEntries", JSON.stringify(calendarEntries));
+    }
+  }, [calendarEntries]);
+
+  // Checking if there's info already stored in the current session:
+  useEffect(() => {
+    const storedPaths = localStorage.getItem("availablePaths");
+    const storedAddress = localStorage.getItem("accountAddress");
+    const storedCalendarEntries = localStorage.getItem("calendarEntries");
+    const storedCurrentPath = localStorage.getItem("currentPath");
+
+    if (storedPaths) {
+      const pathsArray = storedPaths.split(",");
+      setAvailablePaths(pathsArray);
+    }
+    if (storedAddress) {
+      setWalletAddress(storedAddress);
+    }
+    if (storedCalendarEntries) {
+      setCalendarEntries(JSON.parse(storedCalendarEntries));
+    }
+    if (storedCurrentPath) {
+      setCurrentPath(storedCurrentPath);
+    }
+  }, []);
 
   return (
     <Wrapper>
